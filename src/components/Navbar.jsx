@@ -2,6 +2,7 @@ import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AnimeSearch from "./AnimeSearch";
 import TopAnime from "../pages/TopAnime";
 import Season from "./Season";
+import TopManga from "../pages/TopManga";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -39,9 +40,18 @@ export default function Navbar() {
                 <Link
                   className="nav-link active"
                   aria-current="page"
-                  to={"/top"}
+                  to={"/top_anime"}
                 >
-                  Top
+                  TopAnime
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to={"/top_manga"}
+                >
+                  TopManga
                 </Link>
               </li>
               <div className="container-fluid">
@@ -70,7 +80,8 @@ export default function Navbar() {
       </nav>
       <Routes>
         <Route path={"/"} element={<Season />}></Route>
-        <Route path={"/top"} element={<TopAnime />}></Route>
+        <Route path={"/top_anime"} element={<TopAnime />}></Route>
+        <Route path={"/top_manga"} element={<TopManga />}></Route>
         <Route
           path={"/search"}
           element={<AnimeSearch searchKey={searchKey} animeName={animeName} />}

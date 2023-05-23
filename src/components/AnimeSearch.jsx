@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-
+import { puttingZero, gettingEpisodes } from "./functions";
 export default function AnimeSearch(props) {
-  const [info, setInfo] = useState({});
+  const [searchInfo, setInfo] = useState({});
 
   useEffect(() => {
     if (props.animeName) {
@@ -15,23 +15,9 @@ export default function AnimeSearch(props) {
     }
   }, [props.searchKey]);
 
-  const puttingZero = (score) => {
-    return score.toString().length < 4 ? score + "0" : score;
-  };
-
-  const gettingEpisodes = (airing, episodes) => {
-    if (airing) {
-      return "Airing";
-    } else if (!airing && episodes) {
-      return episodes;
-    } else {
-      return "N/A";
-    }
-  };
-
   return (
     <div>
-      {info.data && (
+      {searchInfo.data && (
         <table className="anime-search table align-middle justify-content-center">
           <thead>
             <tr>
@@ -46,7 +32,7 @@ export default function AnimeSearch(props) {
             </tr>
           </thead>
           <tbody className="table-group-divider">
-            {info.data.map((anime) => (
+            {searchInfo.data.map((anime) => (
               <tr>
                 <td className="anime-search-image">
                   <img src={anime.images.jpg.image_url}></img>
@@ -61,7 +47,7 @@ export default function AnimeSearch(props) {
                   </a>
                 </td>
                 <td className="align-center">
-                  {!anime.score ? "N/A" : puttingZero(anime.score)}
+                  &#x2B50; {!anime.score ? "N/A" : puttingZero(anime.score)}
                 </td>
                 <td className="align-center">
                   {gettingEpisodes(anime.airing, anime.episodes)}

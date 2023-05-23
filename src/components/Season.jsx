@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { puttingZero, gettingEpisodes } from "./functions";
 
 export default function Season() {
   const [seasonInfo, setSeasonInfo] = useState([]);
@@ -21,15 +22,15 @@ export default function Season() {
       <h1 className="text-center">CURRENT SEASON</h1>
       {seasonInfo && (
         <div class="container text-center season-container">
-          <div class="row row-cols-3">
+          <div class="row row-cols-2">
             {seasonInfo.map((season) => (
               <div class="col season-div">
-                <div class="content-main">
+                <div class="content-main gy-4">
                   <a className="title" href={season.url} target="_blank">
                     {season.title}
                   </a>
                 </div>
-                <div class="content-secondary">
+                <div class="content-secondary ">
                   <img
                     className="rounded float-start img-thumbnail"
                     src={season.images.jpg.image_url}

@@ -34,49 +34,35 @@
   cursor: pointer;
 }
 
-.season-container {
-  border-top: 3px solid black;
-  border-left: 3px solid black;
-  margin: 20px;
-}
-
-.season-div {
-  padding: 10px;
-  border-bottom: 3px solid black;
-  border-right: 3px solid black;
-}
-
-.content-main {
-  height: 60px;
-}
-
 .content-secondary img {
   width: 150px;
 }
 
 .content-main {
+  height: 60px;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
 .title {
   text-decoration: none;
   color: black;
-  cursor: pointer;
   font-weight: bold;
+  align-self: flex-end;
+  padding-bottom: 3px;
 }
 
 .title:hover {
+  cursor: pointer;
   text-decoration: underline;
   color: #a533ff;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
   font-size: 15px;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
 }
 
 .synopsis {
