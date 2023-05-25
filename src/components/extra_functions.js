@@ -7,13 +7,3 @@ export function puttingZero(score) {
     return score;
   }
 }
-
-export function gettingEpisodes(airing, episodes) {
-  if (airing) {
-    return "Airing";
-  } else if (!airing && episodes) {
-    return episodes;
-  } else {
-    return "N/A";
-  }
-}

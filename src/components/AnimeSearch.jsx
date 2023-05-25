@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { puttingZero, gettingEpisodes } from "./functions";
+import { puttingZero } from "./extra_functions";
+
 export default function AnimeSearch(props) {
-  const [searchInfo, setInfo] = useState({});
+  const [animeInfo, setInfo] = useState({});
 
   useEffect(() => {
     if (props.animeName) {
@@ -17,7 +18,7 @@ export default function AnimeSearch(props) {
 
   return (
     <div>
-      {searchInfo.data && (
+      {animeInfo.data && (
         <table className="anime-search table align-middle justify-content-center">
           <thead>
             <tr>
@@ -32,7 +33,7 @@ export default function AnimeSearch(props) {
             </tr>
           </thead>
           <tbody className="table-group-divider">
-            {searchInfo.data.map((anime) => (
+            {animeInfo.data.map((anime) => (
               <tr>
                 <td className="anime-search-image">
                   <img src={anime.images.jpg.image_url}></img>
@@ -50,7 +51,11 @@ export default function AnimeSearch(props) {
                   &#x2B50; {!anime.score ? "N/A" : puttingZero(anime.score)}
                 </td>
                 <td className="align-center">
-                  {gettingEpisodes(anime.airing, anime.episodes)}
+                  {anime.airing
+                    ? "Airing"
+                    : anime.episodes
+                    ? anime.episodes
+                    : "N/A"}
                 </td>
               </tr>
             ))}
