@@ -1,9 +1,9 @@
-import TopAnime from "../components/TopAnime";
+import TopA from "../components/TopA";
 
-export default function TopA() {
+export default function TopAnime() {
   return (
     <div>
-      <TopAnime />
+      <TopA />
     </div>
   );
 }

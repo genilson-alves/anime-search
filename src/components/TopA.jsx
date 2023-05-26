@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
-import { puttingZero } from "../components/extra_functions";
-import TopNavigation from "../components/TopNavigation";
+import { puttingZero } from "./extra_functions";
+import PageNavigation from "./PageNavigation";
 
-export default function TopAnime() {
+export default function TopA() {
   const [topInfo, setTopInfo] = useState([]); // Setting the fetched data
-  const [pageNumber, setPage] = useState(1); // Setting page number
+  const [page, setPage] = useState(1); // Setting page number
 
   useEffect(() => {
-    fetch(`https://api.jikan.moe/v4/top/anime?q=&limit=25&page=${pageNumber}`)
+    fetch(`https://api.jikan.moe/v4/top/anime?q=&limit=25&page=${page}`)
       .then((response) => response.json())
       .then((response) => {
         setTopInfo(response.data);
       });
-  }, [pageNumber]);
+  }, [page]);
 
   return (
     <div>
       {topInfo && (
-        <table className="table align-middle justify-content-center align-center">
+        <table className="table align-middle text-center">
           <thead>
             <tr>
               <th scope="col">Rank</th>
@@ -39,11 +39,7 @@ export default function TopAnime() {
                   />
                 </td>
                 <td>
-                  <a
-                    className="text-underline text-black"
-                    targetName="_black"
-                    href={top.url}
-                  >
+                  <a className="title-link" target="_black" href={top.url}>
                     {top.title}
                   </a>
                 </td>
@@ -56,7 +52,7 @@ export default function TopAnime() {
           </tbody>
         </table>
       )}
-      <TopNavigation pageNumber={pageNumber} setPage={setPage} />
+      <PageNavigation page={page} setPage={setPage} />
     </div>
   );
 }

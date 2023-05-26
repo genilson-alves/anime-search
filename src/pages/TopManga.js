@@ -1,9 +1,9 @@
-import TopManga from "../components/TopManga";
+import TopM from "../components/TopM";
 
-export default function TopM() {
+export default function TopManga() {
   return (
     <div>
-      <TopManga />
+      <TopM />
     </div>
   );
 }

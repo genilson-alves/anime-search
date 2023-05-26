@@ -1,20 +1,29 @@
 import { useState } from "react";
 import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import CurrentSeason from "./CurrentSeason";
-import AnimeSearch from "./AnimeSearch";
-import TopA from "../pages/TopAnime";
-import TopM from "../pages/TopManga";
+import Season from "./Season";
+import Search from "./Search";
+import TopAnime from "../pages/TopAnime";
+import TopManga from "../pages/TopManga";
 
-export default function NavigationBar() {
+export default function Navigation() {
   const [animeName, setAnimeName] = useState("");
-  const [searchKey, setButtonKey] = useState(false);
+  const [clickKey, setClickKey] = useState(false);
+  const [searchType, setSearchType] = useState("anime");
 
   const settingKey = () => {
-    setButtonKey(!searchKey);
+    setClickKey(!clickKey);
   };
 
   const gettingName = (event) => {
     setAnimeName(event.target.value);
+  };
+
+  const handleChange = (event) => {
+    if (event.target.checked) {
+      setSearchType("manga");
+    } else {
+      setSearchType();
+    }
   };
 
   return (
@@ -68,7 +77,7 @@ export default function NavigationBar() {
 
             <ul className="navbar-nav">
               <div className="container-fluid">
-                <form className="d-flex" role="search">
+                <form className="d-flex align-items-center" role="search">
                   <input
                     className="form-control me-2"
                     type="search"
@@ -76,6 +85,19 @@ export default function NavigationBar() {
                     aria-label="Search"
                     onChange={gettingName}
                   />
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      onClick={handleChange}
+                      id="flexCheckDefault"
+                    />
+                    <label
+                      class="form-check-label"
+                      for="flexCheckDefault"
+                    ></label>
+                  </div>
                   <Link to={"/search"}>
                     <button
                       className="btn btn-dark"
@@ -92,12 +114,18 @@ export default function NavigationBar() {
         </div>
       </nav>
       <Routes>
-        <Route path={"/"} element={<CurrentSeason />}></Route>
-        <Route path={"/top/anime"} element={<TopA />}></Route>
-        <Route path={"/top/manga"} element={<TopM />}></Route>
+        <Route path={"/"} element={<Season />}></Route>
+        <Route path={"/top/anime"} element={<TopAnime />}></Route>
+        <Route path={"/top/manga"} element={<TopManga />}></Route>
         <Route
           path={"/search"}
-          element={<AnimeSearch searchKey={searchKey} animeName={animeName} />}
+          element={
+            <Search
+              clickKey={clickKey}
+              animeName={animeName}
+              searchType={searchType}
+            />
+          }
         ></Route>
       </Routes>
     </Router>

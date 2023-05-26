@@ -1,29 +1,29 @@
+/* Global adjustments */
+
 * {
   font-family: Roboto, sans-serif;
 }
 
-.text-underline {
+:root {
+  --purple: #a533ff;
+}
+
+/* AnimeSearch, TopA, TopM and TopNavigation adjustments */
+
+.title-link {
   text-decoration: none;
   color: black;
 }
 
-.text-underline:hover {
-  text-decoration: underline;
-  cursor: pointer;
-  color: #a533ff;
+.title-link:hover {
   font-weight: bold;
+  color: var(--purple);
+  text-decoration: underline;
 }
 
-.anime-search-image img {
-  width: 50px;
-}
-
+.anime-search-image,
 .top-image {
   width: 70px;
-}
-
-.align-center {
-  text-align: center;
 }
 
 .disabled:hover {
@@ -34,44 +34,41 @@
   cursor: pointer;
 }
 
-.current-season {
-  margin: 10px 0px 30px;
-}
+/* CurrentSeason adjustments */
 
-.content-secondary img {
-  width: 150px;
-}
-
-.content-main {
+.season-content {
   height: 60px;
   display: flex;
   justify-content: center;
-}
-
-.title {
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-  align-self: flex-end;
   padding-bottom: 3px;
 }
 
-.title:hover {
-  cursor: pointer;
-  text-decoration: underline;
-  color: #a533ff;
-}
-
-.content {
-  font-size: 15px;
+.season-title {
+  text-decoration: none;
+  color: black;
   font-weight: bold;
-  display: flex;
-  flex-direction: column;
+  align-self: center;
 }
 
-.synopsis {
+.season-title:hover {
+  text-decoration: underline;
+  color: var(--purple);
+}
+
+.season-image {
+  width: 150px;
+}
+
+.season-synopsis {
   padding: 0px 10px 0px;
   height: 100px;
   overflow: scroll;
   text-align: justify;
+}
+
+.season-informations {
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
 }

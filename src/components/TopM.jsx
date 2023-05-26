@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
-import { puttingZero, gettingChapters } from "../components/extra_functions";
-import TopNavigation from "../components/TopNavigation";
+import { puttingZero, gettingChapters } from "./extra_functions";
+import PageNavigation from "./PageNavigation";
 
-export default function TopManga() {
+export default function TopM() {
   const [topInfo, setTopInfo] = useState([]);
-  const [pageNumber, setPage] = useState(1);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetch(`https://api.jikan.moe/v4/top/manga?q=&limit=25&page=${pageNumber}`)
+    fetch(`https://api.jikan.moe/v4/top/manga?q=&limit=25&page=${page}`)
       .then((response) => response.json())
       .then((response) => {
         setTopInfo(response.data);
       });
-  }, [pageNumber]);
+  }, [page]);
 
   return (
     <div>
       {topInfo && (
-        <table className="table align-middle justify-content-center align-center">
+        <table className="table align-middle text-center">
           <thead>
             <tr>
               <th scope="col">Rank</th>
@@ -42,11 +42,7 @@ export default function TopManga() {
                   />
                 </td>
                 <td>
-                  <a
-                    className="text-underline text-black"
-                    targetName="_black"
-                    href={top.url}
-                  >
+                  <a className="title-link" target="_black" href={top.url}>
                     {top.title}
                   </a>
                 </td>
@@ -60,7 +56,7 @@ export default function TopManga() {
           </tbody>
         </table>
       )}
-      <TopNavigation pageNumber={pageNumber} setPage={setPage} />
+      <PageNavigation page={page} setPage={setPage} />
     </div>
   );
 }
