@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { puttingZero } from "./extra_functions";
 import PageNavigation from "./PageNavigation";
 
-export default function TopA() {
+export default function TopAnime() {
   const [topInfo, setTopInfo] = useState([]); // Setting the fetched data
   const [page, setPage] = useState(1); // Setting page number
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { puttingZero, gettingChapters } from "./extra_functions";
+import { puttingZero } from "./extra_functions";
 import PageNavigation from "./PageNavigation";
 
-export default function TopM() {
+export default function TopManga() {
   const [topInfo, setTopInfo] = useState([]);
   const [page, setPage] = useState(1);
 

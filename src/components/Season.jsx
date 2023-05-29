@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { puttingZero } from "./extra_functions";
 
 export default function Season() {
   const [seasonInfo, setSeasonInfo] = useState([]);
@@ -39,7 +40,10 @@ export default function Season() {
                   />
                   <div className="season-synopsis">{season.synopsis}</div>
                   <div className="season-informations">
-                    <div>&#x2B50; {season.score}</div>
+                    <div>
+                      &#x2B50;{" "}
+                      {!season.score ? "N/A" : puttingZero(season.score)}
+                    </div>
                     <div>Source: {season.source}</div>
                     <div>{season.type}</div>
                     <div>{season.status}</div>

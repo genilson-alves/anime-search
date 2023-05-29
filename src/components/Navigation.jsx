@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Season from "./Season";
-import Search from "./Search";
-import TopAnime from "../pages/TopAnime";
-import TopManga from "../pages/TopManga";
+import SearchAnime from "./SearchAnime";
+import SearchManga from "./SearchManga";
+import TopAnime from "./TopAnime";
+import TopManga from "./TopManga";
 
 export default function Navigation() {
   const [animeName, setAnimeName] = useState("");
@@ -22,7 +23,7 @@ export default function Navigation() {
     if (event.target.checked) {
       setSearchType("manga");
     } else {
-      setSearchType();
+      setSearchType("anime");
     }
   };
 
@@ -98,7 +99,11 @@ export default function Navigation() {
                       for="flexCheckDefault"
                     ></label>
                   </div>
-                  <Link to={"/search"}>
+                  <Link
+                    to={
+                      searchType == "anime" ? "/search/anime" : "search/manga"
+                    }
+                  >
                     <button
                       className="btn btn-dark"
                       onClick={settingKey}
@@ -118,14 +123,12 @@ export default function Navigation() {
         <Route path={"/top/anime"} element={<TopAnime />}></Route>
         <Route path={"/top/manga"} element={<TopManga />}></Route>
         <Route
-          path={"/search"}
-          element={
-            <Search
-              clickKey={clickKey}
-              animeName={animeName}
-              searchType={searchType}
-            />
-          }
+          path={"/search/anime"}
+          element={<SearchAnime animeName={animeName} clickKey={clickKey} />}
+        ></Route>
+        <Route
+          path={"/search/manga"}
+          element={<SearchManga animeName={animeName} clickKey={clickKey} />}
         ></Route>
       </Routes>
     </Router>
