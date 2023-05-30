@@ -1,4 +1,4 @@
-export function puttingZero(score) {
+export function adjustingScore(score) {
   if (score.toString().length == 1) {
     return `${score}.00`;
   } else if (score.toString().length == 3) {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { puttingZero } from "./extra_functions";
+import { adjustingScore } from "./extra_functions";
 
 export default function Season() {
   const [seasonInfo, setSeasonInfo] = useState([]);
@@ -23,7 +23,7 @@ export default function Season() {
     <div className="my-3">
       <h1 className="text-center">CURRENT SEASON</h1>
       {sorted_seasonInfo && (
-        <div className="container text-center season-container">
+        <div className="container text-center season-container" key={1}>
           <div className="row row-cols-2">
             {sorted_seasonInfo.map((season) => (
               <div className="col">
@@ -42,7 +42,7 @@ export default function Season() {
                   <div className="season-informations">
                     <div>
                       &#x2B50;{" "}
-                      {!season.score ? "N/A" : puttingZero(season.score)}
+                      {!season.score ? "N/A" : adjustingScore(season.score)}
                     </div>
                     <div>Source: {season.source}</div>
                     <div>{season.type}</div>

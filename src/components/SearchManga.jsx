@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { puttingZero } from "./extra_functions";
+import { adjustingScore } from "./extra_functions";
 
 export default function SearchManga(props) {
   const [searchInfo, setSearchInfo] = useState([]);
@@ -48,7 +48,7 @@ export default function SearchManga(props) {
                 </td>
                 <td>
                   &#x2B50;
-                  {!search.score ? "N/A" : puttingZero(search.score)}
+                  {!search.score ? "N/A" : adjustingScore(search.score)}
                 </td>
                 <td>{search.type}</td>
                 <td>{search.status}</td>

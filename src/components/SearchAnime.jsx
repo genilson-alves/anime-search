@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { puttingZero } from "./extra_functions";
+import { adjustingScore } from "./extra_functions";
 
 export default function SearchAnime(props) {
   const [searchInfo, setSearchInfo] = useState([]);
@@ -44,7 +44,7 @@ export default function SearchAnime(props) {
                 </td>
                 <td>
                   &#x2B50;
-                  {!search.score ? "N/A" : puttingZero(search.score)}
+                  {!search.score ? "N/A" : adjustingScore(search.score)}
                 </td>
                 <td>
                   {search.airing

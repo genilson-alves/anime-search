@@ -11,19 +11,28 @@ export default function Navigation() {
   const [clickKey, setClickKey] = useState(false);
   const [searchType, setSearchType] = useState("anime");
 
-  const settingKey = () => {
+  const getKey = () => {
     setClickKey(!clickKey);
   };
 
-  const gettingName = (event) => {
-    setAnimeName(event.target.value);
-  };
-
-  const handleChange = (event) => {
+  const getType = (event) => {
     if (event.target.checked) {
       setSearchType("manga");
     } else {
       setSearchType("anime");
+    }
+  };
+
+  const getName = (event) => {
+    if (
+      event.target.value.length > 0 &&
+      event.target.value.trim().length == 0
+    ) {
+      setAnimeName("Naruto");
+    } else if (animeName.length == 0) {
+      setAnimeName("Naruto");
+    } else {
+      setAnimeName(event.target.value);
     }
   };
 
@@ -75,44 +84,46 @@ export default function Navigation() {
                 </li>
               </ul>
             </div>
-
             <ul className="navbar-nav">
-              <div className="container-fluid">
+              <div className="container-fluid d-flex">
                 <form className="d-flex align-items-center" role="search">
                   <input
                     className="form-control me-2"
                     type="search"
                     placeholder="Ex..Naruto"
                     aria-label="Search"
-                    onChange={gettingName}
+                    onChange={getName}
                   />
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      onClick={handleChange}
-                      id="flexCheckDefault"
-                    />
-                    <label
-                      class="form-check-label"
-                      for="flexCheckDefault"
-                    ></label>
-                  </div>
                   <Link
                     to={
                       searchType == "anime" ? "/search/anime" : "search/manga"
                     }
                   >
                     <button
-                      className="btn btn-dark"
-                      onClick={settingKey}
+                      className="btn btn-dark mr-3"
+                      onClick={getKey}
                       type="submit"
                     >
                       Search
                     </button>
                   </Link>
                 </form>
+              </div>
+              <div className="form-check form-switch d-flex align-items-center">
+                <div>
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="flexSwitchCheckDefault"
+                    onClick={getType}
+                  />
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexSwitchCheckDefault"
+                  >
+                    Manga
+                  </label>
+                </div>
               </div>
             </ul>
           </div>

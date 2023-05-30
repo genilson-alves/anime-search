@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { puttingZero } from "./extra_functions";
+import { adjustingScore } from "./extra_functions";
 import PageNavigation from "./PageNavigation";
 
 export default function TopManga() {
@@ -46,7 +46,9 @@ export default function TopManga() {
                     {top.title}
                   </a>
                 </td>
-                <td>&#x2B50; {!top.score ? "N/A" : puttingZero(top.score)}</td>
+                <td>
+                  &#x2B50; {!top.score ? "N/A" : adjustingScore(top.score)}
+                </td>
                 <td>{top.type}</td>
                 <td>{top.status}</td>
                 <td>{top.chapters ? top.chapters : "N/A"}</td>

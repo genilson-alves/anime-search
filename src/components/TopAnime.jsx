@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { puttingZero } from "./extra_functions";
+import { adjustingScore } from "./extra_functions";
 import PageNavigation from "./PageNavigation";
 
 export default function TopAnime() {
@@ -43,7 +43,9 @@ export default function TopAnime() {
                     {top.title}
                   </a>
                 </td>
-                <td>&#x2B50; {!top.score ? "N/A" : puttingZero(top.score)}</td>
+                <td>
+                  &#x2B50; {!top.score ? "N/A" : adjustingScore(top.score)}
+                </td>
                 <td>
                   {top.airing ? "Airing" : top.episodes ? top.episodes : "N/A"}
                 </td>
