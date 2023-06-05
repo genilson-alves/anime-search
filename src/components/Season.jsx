@@ -21,12 +21,12 @@ export default function Season() {
 
   return (
     <div className="my-3">
-      <h1 className="text-center">CURRENT SEASON</h1>
+      <h1 className="text-center current-season">CURRENT SEASON</h1>
       {sorted_seasonInfo && (
-        <div className="container text-center season-container" key={1}>
+        <div className="container text-center season-container">
           <div className="row row-cols-2">
             {sorted_seasonInfo.map((season) => (
-              <div className="col">
+              <div className="col" key={season.mal_id}>
                 <div className="season-content content-main gy-4">
                   <a className="season-title" href={season.url} target="_blank">
                     {season.title}

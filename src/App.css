@@ -36,6 +36,16 @@
 
 /* CurrentSeason adjustments */
 
+.season-container {
+  border: 3px solid black;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.current-season {
+  font-weight: bold;
+}
+
 .season-content {
   height: 60px;
   display: flex;

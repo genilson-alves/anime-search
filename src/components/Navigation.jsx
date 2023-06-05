@@ -7,9 +7,9 @@ import TopAnime from "./TopAnime";
 import TopManga from "./TopManga";
 
 export default function Navigation() {
-  const [animeName, setAnimeName] = useState("");
-  const [clickKey, setClickKey] = useState(false);
+  const [searchName, setSearchName] = useState("Naruto");
   const [searchType, setSearchType] = useState("anime");
+  const [clickKey, setClickKey] = useState(false);
 
   const getKey = () => {
     setClickKey(!clickKey);
@@ -24,15 +24,12 @@ export default function Navigation() {
   };
 
   const getName = (event) => {
-    if (
-      event.target.value.length > 0 &&
-      event.target.value.trim().length == 0
-    ) {
-      setAnimeName("Naruto");
-    } else if (animeName.length == 0) {
-      setAnimeName("Naruto");
+    if (!event.target.value.replace(/\s/g, "").length) {
+      setSearchName("Naruto");
+    } else if (event.target.value.replace(/\s/g, "").length) {
+      setSearchName(event.target.value);
     } else {
-      setAnimeName(event.target.value);
+      setSearchName("Naruto");
     }
   };
 
@@ -96,7 +93,7 @@ export default function Navigation() {
                   />
                   <Link
                     to={
-                      searchType == "anime" ? "/search/anime" : "search/manga"
+                      searchType == "anime" ? "/search/anime" : "/search/manga"
                     }
                   >
                     <button
@@ -135,11 +132,11 @@ export default function Navigation() {
         <Route path={"/top/manga"} element={<TopManga />}></Route>
         <Route
           path={"/search/anime"}
-          element={<SearchAnime animeName={animeName} clickKey={clickKey} />}
+          element={<SearchAnime searchName={searchName} clickKey={clickKey} />}
         ></Route>
         <Route
           path={"/search/manga"}
-          element={<SearchManga animeName={animeName} clickKey={clickKey} />}
+          element={<SearchManga searchName={searchName} clickKey={clickKey} />}
         ></Route>
       </Routes>
     </Router>

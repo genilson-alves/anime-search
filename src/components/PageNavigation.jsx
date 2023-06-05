@@ -24,8 +24,8 @@ export default function PageNavigation(props) {
             </li>
           ) : (
             <ul className="pagination pagination-sm justify-content-center">
-              <li class="page-item">
-                <a class="page-link" onClick={previousPage}>
+              <li className="page-item">
+                <a className="page-link" onClick={previousPage}>
                   Previous
                 </a>
               </li>

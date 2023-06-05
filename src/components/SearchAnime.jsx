@@ -5,9 +5,9 @@ export default function SearchAnime(props) {
   const [searchInfo, setSearchInfo] = useState([]);
 
   useEffect(() => {
-    if (props.animeName) {
+    if (props.searchName) {
       fetch(
-        `https://api.jikan.moe/v4/anime?q=${props.animeName}&limit=10&order_by=members&sort=desc`
+        `https://api.jikan.moe/v4/anime?q=${props.searchName}&limit=10&order_by=members&sort=desc`
       )
         .then((response) => response.json())
         .then((response) => {
@@ -16,9 +16,14 @@ export default function SearchAnime(props) {
     }
   }, [props.clickKey]);
 
+  const ids = searchInfo.map(({ mal_id }) => mal_id);
+  const filtered = searchInfo.filter(
+    ({ mal_id }, index) => !ids.includes(mal_id, index + 1)
+  );
+
   return (
     <div>
-      {searchInfo && (
+      {filtered && (
         <table className="table align-middle text-center">
           <thead>
             <tr>
@@ -29,8 +34,8 @@ export default function SearchAnime(props) {
             </tr>
           </thead>
           <tbody className="table-group-divider">
-            {searchInfo.map((search) => (
-              <tr>
+            {filtered.map((search) => (
+              <tr key={search.mal_id}>
                 <td>
                   <img
                     className="img-thumbnail top-image"

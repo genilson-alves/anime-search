@@ -32,7 +32,7 @@ export default function TopManga() {
           </thead>
           <tbody className="table-group-divider">
             {topInfo.map((top) => (
-              <tr>
+              <tr key={top.mal_id}>
                 <th scope="row">{top.rank}</th>
                 <td>
                   <img
