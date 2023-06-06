@@ -24,6 +24,7 @@
 .anime-search-image,
 .top-image {
   width: 70px;
+  min-width: 50px;
 }
 
 .disabled:hover {
@@ -36,28 +37,14 @@
 
 /* CurrentSeason adjustments */
 
-.season-container {
-  border: 3px solid black;
-  border-radius: 20px;
-  padding: 5px;
-}
-
 .current-season {
   font-weight: bold;
-}
-
-.season-content {
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 3px;
 }
 
 .season-title {
   text-decoration: none;
   color: black;
   font-weight: bold;
-  align-self: center;
 }
 
 .season-title:hover {
@@ -66,7 +53,7 @@
 }
 
 .season-image {
-  width: 150px;
+  width: 200px;
 }
 
 .season-synopsis {
@@ -77,8 +64,9 @@
 }
 
 .season-informations {
-  font-size: 15px;
-  font-weight: bold;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
 }

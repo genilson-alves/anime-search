@@ -6,4 +6,4 @@ export function adjustingScore(score) {
   } else {
     return score;
   }
-}
+} // Used for update the score in case of a different pattern.

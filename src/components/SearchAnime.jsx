@@ -19,7 +19,7 @@ export default function SearchAnime(props) {
   const ids = searchInfo.map(({ mal_id }) => mal_id);
   const filtered = searchInfo.filter(
     ({ mal_id }, index) => !ids.includes(mal_id, index + 1)
-  );
+  ); // Used to filter the content in case of duplicate IDs.
 
   return (
     <div>

@@ -17,24 +17,24 @@ export default function Season() {
     );
   }, [page]);
 
-  const sorted_seasonInfo = [...seasonInfo].sort((a, b) => b.score - a.score);
+  const sorted_seasonInfo = [...seasonInfo].sort((a, b) => b.score - a.score); // Sorting the array using the score.
 
   return (
     <div className="my-3">
       <h1 className="text-center current-season">CURRENT SEASON</h1>
       {sorted_seasonInfo && (
-        <div className="container text-center season-container">
-          <div className="row row-cols-2">
+        <div className="container">
+          <div className="row row-cols-1 gap-3">
             {sorted_seasonInfo.map((season) => (
               <div className="col" key={season.mal_id}>
-                <div className="season-content content-main gy-4">
+                <div className="content-main text-center gy-4">
                   <a className="season-title" href={season.url} target="_blank">
                     {season.title}
                   </a>
                 </div>
                 <div className="content-secondary">
                   <img
-                    className="season-image rounded float-start img-thumbnail"
+                    className="rounded float-start img-thumbnail season-image"
                     src={season.images.jpg.image_url}
                     alt={season.title}
                   />
