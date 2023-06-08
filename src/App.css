@@ -57,16 +57,13 @@
 }
 
 .season-synopsis {
+  height: 150px;
   padding: 0px 10px 0px;
-  height: 100px;
   overflow: scroll;
   text-align: justify;
 }
 
 .season-informations {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-size: 15px;
   font-weight: bold;
 }

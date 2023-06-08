@@ -24,29 +24,31 @@ export default function Season() {
       <h1 className="text-center current-season">CURRENT SEASON</h1>
       {sorted_seasonInfo && (
         <div className="container">
-          <div className="row row-cols-1 gap-3">
+          <div className="row row-cols-1 gap-5">
             {sorted_seasonInfo.map((season) => (
               <div className="col" key={season.mal_id}>
+                <img
+                  className="rounded float-start img-thumbnail season-image "
+                  src={season.images.jpg.image_url}
+                  alt={season.title}
+                />
                 <div className="content-main text-center gy-4">
                   <a className="season-title" href={season.url} target="_blank">
                     {season.title}
                   </a>
                 </div>
-                <div className="content-secondary">
-                  <img
-                    className="rounded float-start img-thumbnail season-image"
-                    src={season.images.jpg.image_url}
-                    alt={season.title}
-                  />
-                  <div className="season-synopsis">{season.synopsis}</div>
-                  <div className="season-informations">
-                    <div>
-                      &#x2B50;{" "}
-                      {!season.score ? "N/A" : adjustingScore(season.score)}
+                <div className="content-secondary d-flex">
+                  <div className="d-flex flex-column w-100">
+                    <div className="season-synopsis">{season.synopsis}</div>
+                    <div className="season-informations mt-3 text-center">
+                      <div>
+                        &#x2B50;{" "}
+                        {!season.score ? "N/A" : adjustingScore(season.score)}
+                      </div>
+                      <div>Source: {season.source}</div>
+                      <div>{season.type}</div>
+                      <div>{season.status}</div>
                     </div>
-                    <div>Source: {season.source}</div>
-                    <div>{season.type}</div>
-                    <div>{season.status}</div>
                   </div>
                 </div>
               </div>
