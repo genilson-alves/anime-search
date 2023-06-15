@@ -4,15 +4,13 @@ import { adjustingScore } from "./extra_functions";
 export default function Season() {
   const [seasonInfo, setSeasonInfo] = useState([]);
   const [page, setPage] = useState(1);
+  const [info, setInfo] = useState([]);
 
   useEffect(() => {
-    fetch(`https://api.jikan.moe/v4/seasons/now?q=&page=${page}`).then(
+    fetch(`https://api.jikan.moe/v4/seasons/now?sfw&page=${page}`).then(
       (response) =>
         response.json().then((response) => {
           setSeasonInfo(seasonInfo.concat(response.data));
-          if (response.pagination.has_next_page) {
-            setPage(page + 1);
-          }
         })
     );
   }, [page]);
@@ -24,31 +22,37 @@ export default function Season() {
       <h1 className="text-center current-season">CURRENT SEASON</h1>
       {sorted_seasonInfo && (
         <div className="container">
-          <div className="row row-cols-1 gap-5">
+          <div className="row row-cols-2">
             {sorted_seasonInfo.map((season) => (
-              <div className="col" key={season.mal_id}>
-                <img
-                  className="rounded float-start img-thumbnail season-image "
-                  src={season.images.jpg.image_url}
-                  alt={season.title}
-                />
-                <div className="content-main text-center gy-4">
-                  <a className="season-title" href={season.url} target="_blank">
-                    {season.title}
-                  </a>
+              <div className="col mb-3 d-flex" key={season.mal_id}>
+                <div className="w-50">
+                  <img
+                    className="rounded img-thumbnail"
+                    src={season.images.jpg.image_url}
+                    alt={season.title}
+                  />
                 </div>
-                <div className="content-secondary d-flex">
-                  <div className="d-flex flex-column w-100">
+                <div className="w-100 d-flex flex-column justify-content-between">
+                  <div className="content-main text-center">
+                    <a
+                      className="season-title"
+                      href={season.url}
+                      target="_blank"
+                    >
+                      {season.title}
+                    </a>
+                  </div>
+                  <div className="content-secondary">
                     <div className="season-synopsis">{season.synopsis}</div>
-                    <div className="season-informations mt-3 text-center">
-                      <div>
-                        &#x2B50;{" "}
-                        {!season.score ? "N/A" : adjustingScore(season.score)}
-                      </div>
-                      <div>Source: {season.source}</div>
-                      <div>{season.type}</div>
-                      <div>{season.status}</div>
+                  </div>
+                  <div className="season-informations text-center">
+                    <div>
+                      &#x2B50;{" "}
+                      {!season.score ? "N/A" : adjustingScore(season.score)}
                     </div>
+                    <div>Source: {season.source}</div>
+                    <div>{season.type}</div>
+                    <div>{season.status}</div>
                   </div>
                 </div>
               </div>

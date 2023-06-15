@@ -52,12 +52,8 @@
   color: var(--purple);
 }
 
-.season-image {
-  width: 200px;
-}
-
 .season-synopsis {
-  height: 150px;
+  height: 120px;
   padding: 0px 10px 0px;
   overflow: scroll;
   text-align: justify;
