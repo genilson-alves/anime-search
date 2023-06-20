@@ -19,10 +19,6 @@ export default function Season() {
       });
   }, [page]);
 
-  console.log(page);
-  console.log(seasonInfo);
-  console.log(max_page);
-
   const sorted_seasonInfo = [...seasonInfo].sort((a, b) => b.score - a.score); // Sorting the array using the score.
 
   return (
@@ -58,7 +54,7 @@ export default function Season() {
                       &#x2B50;{" "}
                       {!season.score ? "N/A" : adjustingScore(season.score)}
                     </div>
-                    <div>Source: {season.source}</div>
+                    <div>Source: {season.sougrce}</div>
                     <div>{season.type}</div>
                     <div>{season.status}</div>
                   </div>
