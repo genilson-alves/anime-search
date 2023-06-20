@@ -1,8 +1,8 @@
 <h1> Anime Search </h1>
 
-> Status: Developing
+> Status: Complete ✔️
 
-This project is being developed using React, Bootstrap and Jikan API. It was done to test my abilities and to learn more about front-end technologies.
+This project was developed using React, Bootstrap and Jikan API. It was done to test my abilities and to learn more about front-end technologies.
 
 The website has as functionalities:
 * Get the anime and manga information from <a href="https://myanimelist.net/" target="_blank">MyAnimeList</a> using Jikan API.
