@@ -8,6 +8,26 @@
   --purple: #a533ff;
 }
 
+/* Custom Scrollbar  */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
 /* AnimeSearch, TopA, TopM and TopNavigation adjustments */
 
 .title-link {
@@ -56,6 +76,7 @@
   height: 120px;
   padding: 0px 10px 0px;
   overflow: scroll;
+  overflow-x: hidden;
   text-align: justify;
 }
 
