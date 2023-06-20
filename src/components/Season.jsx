@@ -4,6 +4,7 @@ import { adjustingScore } from "./extra_functions";
 export default function Season() {
   const [seasonInfo, setSeasonInfo] = useState([]);
   const [page, setPage] = useState(1);
+  const [max_page, setMaxPage] = useState([]);
 
   const settingPage = () => {
     setPage(page + 1);
@@ -12,8 +13,15 @@ export default function Season() {
   useEffect(() => {
     fetch(`https://api.jikan.moe/v4/seasons/now?q=&sfw&page=${page}&limit=24`)
       .then((response) => response.json())
-      .then((response) => setSeasonInfo(seasonInfo.concat(response.data)));
+      .then((response) => {
+        setSeasonInfo(seasonInfo.concat(response.data));
+        setMaxPage(response.pagination.has_next_page);
+      });
   }, [page]);
+
+  console.log(page);
+  console.log(seasonInfo);
+  console.log(max_page);
 
   const sorted_seasonInfo = [...seasonInfo].sort((a, b) => b.score - a.score); // Sorting the array using the score.
 
@@ -58,9 +66,13 @@ export default function Season() {
               </div>
             ))}
             <div className="w-100 d-flex justify-content-center">
-              <button onClick={settingPage} className="btn btn-dark w-25">
-                More
-              </button>
+              {max_page ? (
+                <button onClick={settingPage} className="btn btn-dark w-25">
+                  More
+                </button>
+              ) : (
+                <button className="btn btn-dark w-25 disabled">More</button>
+              )}
             </div>
           </div>
         </div>
