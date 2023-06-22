@@ -54,7 +54,7 @@ export default function Season() {
                       &#x2B50;{" "}
                       {!season.score ? "N/A" : adjustingScore(season.score)}
                     </div>
-                    <div>Source: {season.sougrce}</div>
+                    <div>Source: {season.source}</div>
                     <div>{season.type}</div>
                     <div>{season.status}</div>
                   </div>
