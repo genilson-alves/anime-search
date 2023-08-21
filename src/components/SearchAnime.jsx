@@ -14,6 +14,7 @@ export default function SearchAnime(props) {
           setSearchInfo(response.data);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.clickKey]);
 
   const ids = searchInfo.map(({ mal_id }) => mal_id);
@@ -40,10 +41,16 @@ export default function SearchAnime(props) {
                   <img
                     className="img-thumbnail top-image"
                     src={search.images.jpg.image_url}
-                  ></img>
+                    alt="img-thumbnail"
+                  />
                 </td>
                 <td>
-                  <a className="title-link" href={search.url} target="_blank">
+                  <a
+                    className="title-link"
+                    href={search.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {search.title}
                   </a>
                 </td>

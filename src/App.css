@@ -30,6 +30,13 @@
 
 /* AnimeSearch, TopA, TopM and TopNavigation adjustments */
 
+@media screen and (min-width: 1200px) {
+  .App {
+    max-width: 1400px;
+    margin: auto;
+  }
+}
+
 .title-link {
   text-decoration: none;
   color: black;
@@ -80,7 +87,7 @@
   text-align: justify;
 }
 
-.season-informations {
+.season-information {
   font-size: 15px;
   font-weight: bold;
 }

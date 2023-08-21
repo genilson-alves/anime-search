@@ -14,6 +14,7 @@ export default function SearchManga(props) {
           setSearchInfo(response.data);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.clickKey]);
 
   const ids = searchInfo.map(({ mal_id }) => mal_id);

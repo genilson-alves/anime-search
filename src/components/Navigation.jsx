@@ -102,7 +102,9 @@ export default function Navigation() {
                   onChange={getName}
                 />
                 <Link
-                  to={searchType == "anime" ? "/search/anime" : "/search/manga"}
+                  to={
+                    searchType === "anime" ? "/search/anime" : "/search/manga"
+                  }
                 >
                   <button
                     className="btn btn-dark mr-3"

@@ -18,7 +18,7 @@ export default function PageNavigation(props) {
     <nav aria-label="navigation">
       {
         <ul className="pagination pagination-sm justify-content-center">
-          {props.page == 1 ? (
+          {props.page === 1 ? (
             <li className="page-item disabled">
               <a className="page-link">Previous</a>
             </li>
